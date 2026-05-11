@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://xjjbcos6iuje"]
+
+[ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Shaders/Shader_CRT.gdshader" id="1_6g8bh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cg0me"]
+shader = ExtResource("1_6g8bh")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="CRT" type="Control" unique_id=548932900]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=434516743]
+material = SubResource("ShaderMaterial_cg0me")
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 144.0

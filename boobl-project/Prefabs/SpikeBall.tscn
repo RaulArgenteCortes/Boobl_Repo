@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://desxs1geq301p"]
+
+[ext_resource type="SpriteFrames" uid="uid://b004ynep56huk" path="res://Sprites/SpriteFrames/SpriteFrame_SpikeBall.tres" id="1_u6o2g"]
+[ext_resource type="Script" uid="uid://bmbimfy2kcicu" path="res://Scripts/Script_SpikeBall.gd" id="1_xkqik"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkqik"]
+radius = 8.0
+
+[node name="SpikeBall" type="StaticBody2D" unique_id=1720477597]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_xkqik")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=839515459]
+sprite_frames = ExtResource("1_u6o2g")
+animation = &"Diagonal_Down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92463396]
+scale = Vector2(0.6, 0.6)
+shape = SubResource("CircleShape2D_xkqik")
+debug_color = Color(498.71902, 0, 261.40622, 0.41960785)

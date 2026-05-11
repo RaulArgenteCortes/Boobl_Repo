@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b004ynep56huk"]
+
+[ext_resource type="Texture2D" uid="uid://bvqqvsc7e0hcr" path="res://Sprites/SpikeBall.png" id="1_6q5gj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q5gj"]
+atlas = ExtResource("1_6q5gj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryrig"]
+atlas = ExtResource("1_6q5gj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5scj"]
+atlas = ExtResource("1_6q5gj")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q5gj")
+}],
+"loop": true,
+"name": &"Diagonal_Down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryrig")
+}],
+"loop": true,
+"name": &"Diagonal_Up",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5scj")
+}],
+"loop": true,
+"name": &"Straight",
+"speed": 6.0
+}]

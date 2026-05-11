@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dln64fm7k53p6"]
+
+[ext_resource type="Script" uid="uid://cn854pvrfv4lb" path="res://Scripts/Script_BubblePlayer.gd" id="1_8rd6j"]
+[ext_resource type="SpriteFrames" uid="uid://c8c5grhj122gx" path="res://Sprites/SpriteFrames/SpriteFrame_Bubble.tres" id="1_mrhy6"]
+
+[node name="BubblePlayer" type="Node2D" unique_id=1997233850]
+z_index = 9
+script = ExtResource("1_8rd6j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1562189077]
+sprite_frames = ExtResource("1_mrhy6")
+animation = &"Enabled"
+autoplay = "Enabled"

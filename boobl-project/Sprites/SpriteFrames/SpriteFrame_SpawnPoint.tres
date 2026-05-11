@@ -1,0 +1,50 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b8dao1bstu74q"]
+
+[ext_resource type="Texture2D" uid="uid://d0ddxdeibj6w2" path="res://Sprites/SpawnPoint.png" id="1_tqk28"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnc8u"]
+atlas = ExtResource("1_tqk28")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu6tm"]
+atlas = ExtResource("1_tqk28")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qs6n"]
+atlas = ExtResource("1_tqk28")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywn65"]
+atlas = ExtResource("1_tqk28")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wnc8u")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_iu6tm")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_wnc8u")
+}],
+"loop": true,
+"name": &"Idle_Off",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_0qs6n")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_ywn65")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_0qs6n")
+}],
+"loop": true,
+"name": &"Idle_On",
+"speed": 6.0
+}]

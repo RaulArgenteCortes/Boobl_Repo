@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://q4bl2adi6270"]
+
+[ext_resource type="SpriteFrames" uid="uid://e5cnj6l7lhpq" path="res://Sprites/SpriteFrames/SpriteFrame_Player.tres" id="1_um8lo"]
+[ext_resource type="Script" uid="uid://lc4mek1jkn5k" path="res://Scripts/Script_PlayerMovement.gd" id="1_x3d5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3d5u"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b43ah"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gg3t4"]
+size = Vector2(12, 2.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shmu5"]
+size = Vector2(12, 2.2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxq8l"]
+size = Vector2(2.2, 4)
+
+[node name="Player" type="CharacterBody2D" unique_id=1614960923]
+z_index = 10
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_x3d5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1096077229]
+shape = SubResource("RectangleShape2D_x3d5u")
+debug_color = Color(1, 1, 1, 0.30980393)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1153459768]
+position = Vector2(0, -1)
+sprite_frames = ExtResource("1_um8lo")
+animation = &"Dash"
+autoplay = "Idle"
+
+[node name="Area2D_Death" type="Area2D" parent="." unique_id=821826183]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Death" unique_id=1073922017]
+shape = SubResource("RectangleShape2D_x3d5u")
+debug_color = Color(1, 0, 0.49803922, 0.18431373)
+
+[node name="Area2D_GroundCheck" type="Area2D" parent="." unique_id=1274636121]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_GroundCheck" unique_id=1785353372]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_b43ah")
+debug_color = Color(0, 0.49803922, 1, 0.41960785)
+
+[node name="BubbleFollow" type="Node2D" parent="." unique_id=59928290]
+position = Vector2(-10, -8)
+
+[node name="Sticky" type="Node2D" parent="." unique_id=611321298]
+
+[node name="Area2D_StickyN" type="Area2D" parent="Sticky" unique_id=36512143]
+position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyN" unique_id=1503133423]
+shape = SubResource("RectangleShape2D_gg3t4")
+debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[node name="Area2D_StickyS" type="Area2D" parent="Sticky" unique_id=636603134]
+position = Vector2(0, 5)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyS" unique_id=321792232]
+shape = SubResource("RectangleShape2D_shmu5")
+debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[node name="Area2D_StickyW" type="Area2D" parent="Sticky" unique_id=1986545408]
+position = Vector2(-5, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyW" unique_id=528107131]
+shape = SubResource("RectangleShape2D_vxq8l")
+debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[node name="Area2D_StickyE" type="Area2D" parent="Sticky" unique_id=184751150]
+position = Vector2(5, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyE" unique_id=426334289]
+shape = SubResource("RectangleShape2D_vxq8l")
+debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
+[connection signal="body_entered" from="Area2D_Death" to="." method="_on_area_entered_death"]
+[connection signal="body_entered" from="Area2D_GroundCheck" to="." method="_on_area_entered_groundcheck"]
+[connection signal="body_exited" from="Area2D_GroundCheck" to="." method="_on_area_exited_groundcheck"]
+[connection signal="body_entered" from="Sticky/Area2D_StickyN" to="." method="_on_area_entered_sticky_N"]
+[connection signal="body_exited" from="Sticky/Area2D_StickyN" to="." method="_on_area_exited_sticky_N"]
+[connection signal="body_entered" from="Sticky/Area2D_StickyS" to="." method="_on_area_entered_sticky_S"]
+[connection signal="body_exited" from="Sticky/Area2D_StickyS" to="." method="_on_area_exited_sticky_S"]
+[connection signal="body_entered" from="Sticky/Area2D_StickyW" to="." method="_on_area_entered_sticky_W"]
+[connection signal="body_exited" from="Sticky/Area2D_StickyW" to="." method="_on_area_exited_sticky_W"]
+[connection signal="body_entered" from="Sticky/Area2D_StickyE" to="." method="_on_area_entered_sticky_E"]
+[connection signal="body_exited" from="Sticky/Area2D_StickyE" to="." method="_on_area_exited_sticky_E"]

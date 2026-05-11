@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://tl8es2tutxty"]
+
+[ext_resource type="SpriteFrames" uid="uid://yrlq31bcg2fn" path="res://Sprites/SpriteFrames/SpriteFrame_Spring.tres" id="1_fy6p7"]
+[ext_resource type="Script" uid="uid://bg816aqik46qt" path="res://Scripts/Script_Spring.gd" id="1_q4c11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4c11"]
+size = Vector2(12, 8)
+
+[node name="Spring" type="Area2D" unique_id=398237677]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q4c11")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842580390]
+sprite_frames = ExtResource("1_fy6p7")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1688023005]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_q4c11")
+debug_color = Color(0.49803922, 1, 0, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

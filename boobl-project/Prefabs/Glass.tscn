@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bulbpecxbthnh"]
+
+[ext_resource type="SpriteFrames" uid="uid://g2xtcgnmmm4q" path="res://Sprites/SpriteFrames/SpriteFrame_Glass.tres" id="1_nf6c3"]
+[ext_resource type="Script" uid="uid://d1asakefvshwc" path="res://Scripts/Script_Glass.gd" id="1_puu8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omrlh"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_puu8q"]
+size = Vector2(16, 16)
+
+[node name="Glass" type="Area2D" unique_id=1108080533]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_puu8q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1483387330]
+shape = SubResource("RectangleShape2D_omrlh")
+debug_color = Color(0, 1, 0.49803922, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2115384638]
+sprite_frames = ExtResource("1_nf6c3")
+animation = &"Close"
+autoplay = "Idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=762640558]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1949046095]
+shape = SubResource("RectangleShape2D_puu8q")
+debug_color = Color(0, 1, 0.49803922, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

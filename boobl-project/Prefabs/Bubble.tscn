@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cwwsitvl4w28e"]
+
+[ext_resource type="Script" uid="uid://dhcfgc613yvkp" path="res://Scripts/Script_Bubble.gd" id="1_eykqe"]
+[ext_resource type="SpriteFrames" uid="uid://c8c5grhj122gx" path="res://Sprites/SpriteFrames/SpriteFrame_Bubble.tres" id="1_qgs0j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1a31p"]
+radius = 5.0
+
+[node name="Bubble" type="Area2D" unique_id=98401263]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_eykqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=338160006]
+shape = SubResource("CircleShape2D_1a31p")
+debug_color = Color(1, 1, 1, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=808919299]
+sprite_frames = ExtResource("1_qgs0j")
+animation = &"Enabled"
+autoplay = "Enabled"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
