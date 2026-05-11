@@ -16,7 +16,7 @@ size = Vector2(12, 2.2)
 size = Vector2(12, 2.2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxq8l"]
-size = Vector2(2.2, 4)
+size = Vector2(2.2, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=1614960923]
 z_index = 10
