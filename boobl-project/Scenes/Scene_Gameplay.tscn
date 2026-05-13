@@ -2,7 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://coqs24kap1ynq" path="res://TileSets/TileSet_Main.tres" id="1_fe1ul"]
 [ext_resource type="Script" uid="uid://wy633w447g5s" path="res://Scripts/Script_CameraPlayer.gd" id="2_46u2g"]
-[ext_resource type="PackedScene" uid="uid://xjjbcos6iuje" path="res://Prefabs/CRT.tscn" id="3_lly1x"]
 [ext_resource type="PackedScene" uid="uid://q4bl2adi6270" path="res://Prefabs/Player.tscn" id="4_oltn2"]
 [ext_resource type="PackedScene" uid="uid://dln64fm7k53p6" path="res://Prefabs/BubblePlayer.tscn" id="5_71wej"]
 [ext_resource type="PackedScene" uid="uid://lnnjjkoudsqx" path="res://Prefabs/BigBubble.tscn" id="6_75akb"]
@@ -32,13 +31,8 @@ tile_map_data = PackedByteArray("AAD4//z/AgABAAEAAAD4//3/AgABAAEAAAD4//7/AgABAAE
 tile_set = ExtResource("1_fe1ul")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=588023569]
+zoom = Vector2(5, 5)
 script = ExtResource("2_46u2g")
-
-[node name="CRT" parent="Camera2D" unique_id=548932900 instance=ExtResource("3_lly1x")]
-visible = false
-anchors_preset = -1
-offset_left = -128.0
-offset_top = -72.0
 
 [node name="Player" parent="." unique_id=1614960923 instance=ExtResource("4_oltn2")]
 position = Vector2(0, 32)

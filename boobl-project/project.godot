@@ -11,16 +11,14 @@ config_version=5
 [application]
 
 config/name="Boobl_Project"
-run/main_scene="uid://d25m3tgmqh5mf"
+run/main_scene="uid://0107pksk8rxq"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=144
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 
 [file_customization]
