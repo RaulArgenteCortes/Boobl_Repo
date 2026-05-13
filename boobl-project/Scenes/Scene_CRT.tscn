@@ -6,19 +6,19 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fho2"]
 shader = ExtResource("2_q2v3o")
 shader_parameter/resolution = Vector2(1280, 720)
-shader_parameter/scan_line_amount = 0.250000011875
+shader_parameter/scan_line_amount = 0.0
 shader_parameter/warp_amount = 0.0
 shader_parameter/noise_amount = 0.0
 shader_parameter/interference_amount = 0.0
-shader_parameter/grille_amount = 0.250000011875
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.250000011875
-shader_parameter/vignette_intensity = 0.250000011875
-shader_parameter/aberation_amount = 0.50000002375
+shader_parameter/grille_amount = 0.10000000475
+shader_parameter/grille_size = 1.6670000316825
+shader_parameter/vignette_amount = 0.10000000475
+shader_parameter/vignette_intensity = 1.0
+shader_parameter/aberation_amount = 0.0
 shader_parameter/roll_line_amount = 0.0
 shader_parameter/roll_speed = 3.7999999946691787e-07
 shader_parameter/scan_line_strength = -5.999999715
-shader_parameter/pixel_strength = -1.9999999050000001
+shader_parameter/pixel_strength = -4.0
 
 [node name="Scene_CRT" type="Node2D" unique_id=696192565]
 
