@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dm0fbr0acjra6"]
+[gd_scene format=3 uid="uid://xjjbcos6iuje"]
 
 [ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Shaders/Shader_CRT.gdshader" id="1_6g8bh"]
 [ext_resource type="Shader" uid="uid://cv7hfm5duhalc" path="res://addons/crt/crt.gdshader" id="2_vkhoy"]
@@ -54,6 +54,7 @@ offset_right = 256.0
 offset_bottom = 144.0
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=151442750]
+visible = false
 material = SubResource("ShaderMaterial_j48ks")
 layout_mode = 0
 offset_right = 256.0
