@@ -2,23 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://d25m3tgmqh5mf" path="res://Scenes/Scene_Gameplay.tscn" id="1_7cb3f"]
 [ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Shaders/Shader_CRT.gdshader" id="2_q2v3o"]
+[ext_resource type="PackedScene" uid="uid://cdi3kiuxtedjt" path="res://Scenes/Scene_PauseMenu.tscn" id="3_7cb3f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fho2"]
 shader = ExtResource("2_q2v3o")
 shader_parameter/resolution = Vector2(1280, 720)
-shader_parameter/scan_line_amount = 0.0
+shader_parameter/scan_line_amount = 0.50000002375
 shader_parameter/warp_amount = 0.0
 shader_parameter/noise_amount = 0.0
 shader_parameter/interference_amount = 0.0
-shader_parameter/grille_amount = 0.10000000475
+shader_parameter/grille_amount = 0.050000002375
 shader_parameter/grille_size = 1.6670000316825
-shader_parameter/vignette_amount = 0.10000000475
-shader_parameter/vignette_intensity = 1.0
-shader_parameter/aberation_amount = 0.0
+shader_parameter/vignette_amount = 0.250000011875
+shader_parameter/vignette_intensity = 0.250000011875
+shader_parameter/aberation_amount = 0.50000002375
 shader_parameter/roll_line_amount = 0.0
 shader_parameter/roll_speed = 3.7999999946691787e-07
-shader_parameter/scan_line_strength = -5.999999715
-shader_parameter/pixel_strength = -4.0
+shader_parameter/scan_line_strength = -6.49999973875
+shader_parameter/pixel_strength = 0.0
 
 [node name="Scene_CRT" type="Node2D" unique_id=696192565]
 
@@ -41,6 +42,8 @@ render_target_update_mode = 4
 
 [node name="Scene_Gameplay" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=231120268 instance=ExtResource("1_7cb3f")]
 
+[node name="PauseMenu" parent="CanvasLayer" unique_id=478394854 instance=ExtResource("3_7cb3f")]
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=408859298]
 material = SubResource("ShaderMaterial_3fho2")
 anchors_preset = 15
@@ -48,3 +51,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

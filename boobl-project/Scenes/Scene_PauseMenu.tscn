@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cdi3kiuxtedjt"]
+
+[ext_resource type="Script" uid="uid://byihl2q6a7a6q" path="res://Scripts/Script_PauseMenu.gd" id="1_qbtv5"]
+[ext_resource type="Texture2D" uid="uid://cgmc6cebdqcx7" path="res://icon.svg" id="2_uildc"]
+
+[node name="PauseMenu" type="Control" unique_id=478394854]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbtv5")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=199387747]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=410752388]
+visible = false
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1504705397]
+layout_mode = 2
+text = "1"
+
+[node name="Sound" type="Button" parent="PanelContainer/HBoxContainer" unique_id=776355828]
+layout_mode = 2
+text = "2"
+
+[node name="Music" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1575409022]
+layout_mode = 2
+text = "3"
+
+[node name="Die" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1935347087]
+layout_mode = 2
+text = "4"
+
+[node name="Quit" type="Button" parent="PanelContainer/HBoxContainer" unique_id=1427199360]
+layout_mode = 2
+text = "5"
+
+[node name="Reset" type="Button" parent="PanelContainer/HBoxContainer" unique_id=455822043]
+layout_mode = 2
+text = "6"
+
+[node name="Panel" type="Panel" parent="." unique_id=904230718]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 312.0
+offset_right = 684.0
+offset_bottom = 412.0
+
+[node name="Button" type="Button" parent="Panel" unique_id=1712995209]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("2_uildc")
+
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Sound" to="." method="_on_options_button_up"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Music" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Die" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="PanelContainer/HBoxContainer/Reset" to="." method="_on_quit_button_up"]
