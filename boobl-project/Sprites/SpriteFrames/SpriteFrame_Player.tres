@@ -1,8 +1,25 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://e5cnj6l7lhpq"]
 
+[ext_resource type="Texture2D" uid="uid://5ma1lf6cw1mc" path="res://Sprites/PlayerCrash.png" id="1_6oxti"]
 [ext_resource type="Texture2D" uid="uid://cx178fn4wvpd7" path="res://Sprites/Player.png" id="1_7elbj"]
 [ext_resource type="Texture2D" uid="uid://ducrr2nvdxfeu" path="res://Sprites/Player_Death.png" id="2_4y6fw"]
 [ext_resource type="Texture2D" uid="uid://bcfjwbpri60rg" path="res://TileSets/Walls.png" id="3_lrooo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpfau"]
+atlas = ExtResource("1_6oxti")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ouu"]
+atlas = ExtResource("1_6oxti")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n2ro"]
+atlas = ExtResource("1_6oxti")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj4pp"]
+atlas = ExtResource("1_6oxti")
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y86pd"]
 atlas = ExtResource("1_7elbj")
@@ -82,6 +99,26 @@ region = Rect2(16, 16, 16, 16)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_mpfau")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_p5ouu")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_3n2ro")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_dj4pp")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_3n2ro")
+}],
+"loop": false,
+"name": &"Crash",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y86pd")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dm0fbr0acjra6"]
 
-[ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Shaders/Shader_CRT.gdshader" id="1_6g8bh"]
-[ext_resource type="Shader" uid="uid://cv7hfm5duhalc" path="res://addons/crt/crt.gdshader" id="2_vkhoy"]
+[ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Visuals/Shader_CRT.gdshader" id="1_6g8bh"]
+[ext_resource type="Shader" path="res://addons/crt/crt.gdshader" id="2_vkhoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cg0me"]
 shader = ExtResource("1_6g8bh")

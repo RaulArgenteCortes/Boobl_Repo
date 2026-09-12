@@ -111,7 +111,7 @@ func _handle_movement():
 
 func _handle_jump():
 	
-	if is_on_floor():
+	if is_on_floor() && !isDashing:
 		canJump = true
 		canDash = true
 	

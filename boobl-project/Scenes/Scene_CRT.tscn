@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://0107pksk8rxq"]
 
 [ext_resource type="PackedScene" uid="uid://d25m3tgmqh5mf" path="res://Scenes/Scene_Gameplay.tscn" id="1_7cb3f"]
-[ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Shaders/Shader_CRT.gdshader" id="2_q2v3o"]
-[ext_resource type="PackedScene" uid="uid://cdi3kiuxtedjt" path="res://Scenes/Scene_PauseMenu.tscn" id="3_7cb3f"]
+[ext_resource type="Shader" uid="uid://d27bh3gqoxr7h" path="res://Visuals/Shader_CRT.gdshader" id="2_q2v3o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3fho2"]
 shader = ExtResource("2_q2v3o")
@@ -15,7 +14,7 @@ shader_parameter/grille_amount = 0.050000002375
 shader_parameter/grille_size = 1.6670000316825
 shader_parameter/vignette_amount = 0.250000011875
 shader_parameter/vignette_intensity = 0.250000011875
-shader_parameter/aberation_amount = 0.50000002375
+shader_parameter/aberation_amount = 0.0
 shader_parameter/roll_line_amount = 0.0
 shader_parameter/roll_speed = 3.7999999946691787e-07
 shader_parameter/scan_line_strength = -6.49999973875
@@ -37,12 +36,10 @@ stretch = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(1280, 720)
+size = Vector2i(256, 144)
 render_target_update_mode = 4
 
 [node name="Scene_Gameplay" parent="CanvasLayer/SubViewportContainer/SubViewport" unique_id=231120268 instance=ExtResource("1_7cb3f")]
-
-[node name="PauseMenu" parent="CanvasLayer" unique_id=478394854 instance=ExtResource("3_7cb3f")]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=408859298]
 material = SubResource("ShaderMaterial_3fho2")

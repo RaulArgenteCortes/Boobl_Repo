@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1wmkg3id31qk"]
+
+[ext_resource type="PackedScene" uid="uid://d25m3tgmqh5mf" path="res://Scenes/Scene_Gameplay.tscn" id="1_y7bp6"]
+[ext_resource type="PackedScene" uid="uid://bvvn5greaexkt" path="res://Scenes/Scene_Menu.tscn" id="2_5f8wx"]
+
+[node name="Scene_FullGame" type="Node2D" unique_id=463837943]
+
+[node name="Scene_Gameplay" parent="." unique_id=231120268 instance=ExtResource("1_y7bp6")]
+
+[node name="Scene_Menu" parent="." unique_id=1859303041 instance=ExtResource("2_5f8wx")]

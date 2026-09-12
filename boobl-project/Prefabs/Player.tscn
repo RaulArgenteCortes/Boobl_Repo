@@ -2,6 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://e5cnj6l7lhpq" path="res://Sprites/SpriteFrames/SpriteFrame_Player.tres" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://lc4mek1jkn5k" path="res://Scripts/Script_PlayerMovement.gd" id="1_x3d5u"]
+[ext_resource type="Texture2D" uid="uid://qqees0vg4swr" path="res://Sprites/Particles/BubbleParticles.png" id="3_b43ah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3d5u"]
 size = Vector2(12, 12)
@@ -31,8 +32,10 @@ debug_color = Color(1, 1, 1, 0.30980393)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1153459768]
 position = Vector2(0, -1)
 sprite_frames = ExtResource("1_um8lo")
-animation = &"Dash"
+animation = &"Crash"
 autoplay = "Idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="Area2D_Death" type="Area2D" parent="." unique_id=821826183]
 collision_layer = 0
@@ -90,6 +93,17 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyE" unique_id=426334289]
 shape = SubResource("RectangleShape2D_vxq8l")
 debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1441370944]
+emitting = false
+amount = 4
+texture = ExtResource("3_b43ah")
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+gravity = Vector2(0, -32)
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
 [connection signal="body_entered" from="Area2D_Death" to="." method="_on_area_entered_death"]

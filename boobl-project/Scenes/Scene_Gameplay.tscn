@@ -7,13 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://lnnjjkoudsqx" path="res://Prefabs/BigBubble.tscn" id="6_75akb"]
 [ext_resource type="PackedScene" uid="uid://c01hx24qslrf0" path="res://Prefabs/SpawnPoint.tscn" id="7_jenla"]
 [ext_resource type="PackedScene" uid="uid://desxs1geq301p" path="res://Prefabs/SpikeBall.tscn" id="8_5suv6"]
-[ext_resource type="SpriteFrames" uid="uid://604vh4ecm7vk" path="res://Sprites/SpriteFrames/SpriteFrame_Inputs.tres" id="8_lly1x"]
 [ext_resource type="PackedScene" uid="uid://tl8es2tutxty" path="res://Prefabs/Spring.tscn" id="9_lrwau"]
 [ext_resource type="PackedScene" uid="uid://cwwsitvl4w28e" path="res://Prefabs/Bubble.tscn" id="10_2yjfi"]
 [ext_resource type="PackedScene" uid="uid://bulbpecxbthnh" path="res://Prefabs/Glass.tscn" id="11_aaru7"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_46u2g"]
-radius = 4.0
+[ext_resource type="Texture2D" uid="uid://bdttkd48d2h0i" path="res://Sprites/UI/TheEnd.png" id="11_fe1ul"]
 
 [node name="Scene_Gameplay" type="Node2D" unique_id=231120268]
 
@@ -31,7 +28,6 @@ tile_map_data = PackedByteArray("AAD4//z/AgABAAEAAAD4//3/AgABAAEAAAD4//7/AgABAAE
 tile_set = ExtResource("1_fe1ul")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=588023569]
-zoom = Vector2(5, 5)
 script = ExtResource("2_46u2g")
 
 [node name="Player" parent="." unique_id=1614960923 instance=ExtResource("4_oltn2")]
@@ -41,87 +37,10 @@ position = Vector2(0, 32)
 position = Vector2(0, 16)
 
 [node name="SpawnPlayer" type="Node2D" parent="." unique_id=461320594]
-position = Vector2(0, 48)
+position = Vector2(0, -72)
 
 [node name="BigBubble" parent="." unique_id=623703334 instance=ExtResource("6_75akb")]
 position = Vector2(0, -104)
-
-[node name="TutorialObjects" type="Node2D" parent="." unique_id=1746260315]
-visible = false
-
-[node name="Icon_Left" type="Area2D" parent="TutorialObjects" unique_id=1396861747]
-position = Vector2(-56, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Left" unique_id=826353405]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Left" unique_id=1230039483]
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_Left"
-autoplay = "Idle_Left"
-
-[node name="Icon_Right" type="Area2D" parent="TutorialObjects" unique_id=133185490]
-position = Vector2(56, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Right" unique_id=1340427093]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Right" unique_id=581600692]
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_Right"
-autoplay = "Idle_Right"
-
-[node name="Icon_Up" type="Area2D" parent="TutorialObjects" unique_id=1378222916]
-position = Vector2(-8, 112)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Up" unique_id=1120636244]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Up" unique_id=1625455139]
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_Up"
-autoplay = "Idle_Up"
-
-[node name="Icon_Down" type="Area2D" parent="TutorialObjects" unique_id=1030303478]
-position = Vector2(8, 176)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Down" unique_id=1754542258]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Down" unique_id=316675965]
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_Down"
-autoplay = "Idle_Down"
-
-[node name="Icon_Jump" type="Area2D" parent="TutorialObjects" unique_id=858272289]
-position = Vector2(0, -16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Jump" unique_id=1019856533]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Jump" unique_id=801862991]
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_JumpDash"
-autoplay = "Idle_JumpDash"
-frame_progress = 0.61153936
-
-[node name="Icon_Dash" type="Area2D" parent="TutorialObjects" unique_id=1649247341]
-position = Vector2(264, -16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialObjects/Icon_Dash" unique_id=1864782726]
-visible = false
-shape = SubResource("CircleShape2D_46u2g")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TutorialObjects/Icon_Dash" unique_id=2073679819]
-position = Vector2(16, -16)
-sprite_frames = ExtResource("8_lly1x")
-animation = &"Idle_JumpDash"
-autoplay = "Idle_JumpDash"
 
 [node name="Objects" type="Node2D" parent="." unique_id=1733809998]
 
@@ -493,17 +412,11 @@ position = Vector2(-280, -464)
 [node name="SpikeBall75" parent="Objects/SpikeBalls" unique_id=1609506989 instance=ExtResource("8_5suv6")]
 position = Vector2(-232, -464)
 
-[node name="SpikeBall73" parent="Objects/SpikeBalls" unique_id=114639193 instance=ExtResource("8_5suv6")]
-position = Vector2(-216, -480)
-
 [node name="SpikeBall74" parent="Objects/SpikeBalls" unique_id=1382833115 instance=ExtResource("8_5suv6")]
 position = Vector2(-312, -400)
 
 [node name="SpikeBall76" parent="Objects/SpikeBalls" unique_id=1789648814 instance=ExtResource("8_5suv6")]
 position = Vector2(-248, -416)
-
-[node name="SpikeBall71" parent="Objects/SpikeBalls" unique_id=1953977055 instance=ExtResource("8_5suv6")]
-position = Vector2(-296, -448)
 
 [node name="SpikeBall72" parent="Objects/SpikeBalls" unique_id=1499350595 instance=ExtResource("8_5suv6")]
 position = Vector2(-328, -480)
@@ -978,3 +891,8 @@ position = Vector2(-72, -288)
 
 [node name="Glass40" parent="Objects/Glasses" unique_id=1225455985 instance=ExtResource("11_aaru7")]
 position = Vector2(-328, 128)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104996079]
+visible = false
+position = Vector2(0, 40)
+texture = ExtResource("11_fe1ul")

@@ -3,6 +3,7 @@ extends Area2D
 var transformed = false
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var end_sprite = $"../Sprite2D"
 
 
 func _process(_delta: float) -> void:
@@ -16,5 +17,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	transformed = true
 	_body.visible = false
 	_body.process_mode = Node.PROCESS_MODE_DISABLED
-	await get_tree().create_timer(7).timeout
-	get_tree().quit()
+	end_sprite.visible = true
+	await get_tree().create_timer(8).timeout
+	get_tree().reload_current_scene()

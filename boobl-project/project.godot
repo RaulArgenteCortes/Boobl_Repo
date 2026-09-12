@@ -11,14 +11,16 @@ config_version=5
 [application]
 
 config/name="Boobl_Project"
-run/main_scene="uid://0107pksk8rxq"
+run/main_scene="uid://c1wmkg3id31qk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=256
+window/size/viewport_height=144
+window/size/window_width_override=1024
+window/size/window_height_override=576
 window/stretch/mode="viewport"
 
 [file_customization]
@@ -27,9 +29,9 @@ folder_colors={
 "res://Prefabs/": "gray",
 "res://Scenes/": "blue",
 "res://Scripts/": "yellow",
-"res://Shaders/": "green",
 "res://Sprites/": "pink",
-"res://TileSets/": "purple"
+"res://TileSets/": "purple",
+"res://Visuals/": "green"
 }
 
 [input]
@@ -86,6 +88,7 @@ gameplay_pause={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
 ]
 }
 
@@ -108,4 +111,3 @@ rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 2d/snap/snap_2d_transforms_to_pixel=true
-2d/snap/snap_2d_vertices_to_pixel=true

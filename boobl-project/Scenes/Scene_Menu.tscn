@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bvvn5greaexkt"]
+
+[ext_resource type="Script" uid="uid://byihl2q6a7a6q" path="res://Scripts/Script_Menu.gd" id="1_yvv37"]
+[ext_resource type="Texture2D" uid="uid://d25w3ce6buovx" path="res://Sprites/UI/Title_0.png" id="2_preye"]
+[ext_resource type="Texture2D" uid="uid://bvqgfxyco2ip6" path="res://Sprites/UI/Title_1.png" id="3_c241g"]
+[ext_resource type="Texture2D" uid="uid://queckawimxnm" path="res://Sprites/UI/Title_2.png" id="4_ahfbf"]
+[ext_resource type="Texture2D" uid="uid://dvrbrk5q580dc" path="res://Sprites/UI/Sound_2.png" id="5_ahfbf"]
+[ext_resource type="Texture2D" uid="uid://c5ccwsbikcsx6" path="res://Sprites/UI/Credit.png" id="5_nep3o"]
+[ext_resource type="Texture2D" uid="uid://b03aw4f82hkbj" path="res://Sprites/UI/Continue.png" id="5_preye"]
+[ext_resource type="Theme" uid="uid://c5y2kh31ft4ki" path="res://Visuals/Theme_ButtonDefault.tres" id="6_m08e7"]
+[ext_resource type="Texture2D" uid="uid://cgxbijuk68d2w" path="res://Sprites/UI/Music_2.png" id="7_3op3g"]
+[ext_resource type="Texture2D" uid="uid://bv3klj4bjgaco" path="res://Sprites/UI/Decor.png" id="12_40lxi"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3op3g"]
+frames = 4
+frame_0/texture = ExtResource("2_preye")
+frame_1/texture = ExtResource("3_c241g")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_ahfbf")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("3_c241g")
+frame_3/duration = 1.0
+
+[node name="Scene_Menu" type="CanvasLayer" unique_id=1859303041]
+process_mode = 3
+script = ExtResource("1_yvv37")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1058437291]
+offset_right = 256.0
+offset_bottom = 144.0
+color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[node name="Title" type="TextureRect" parent="." unique_id=828260439]
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 192.0
+offset_bottom = 56.0
+texture = SubResource("AnimatedTexture_3op3g")
+stretch_mode = 3
+
+[node name="Credit" type="TextureRect" parent="." unique_id=645898759]
+offset_left = 64.0
+offset_top = 132.0
+offset_right = 192.0
+offset_bottom = 140.0
+texture = ExtResource("5_nep3o")
+stretch_mode = 3
+
+[node name="Sound" type="Button" parent="." unique_id=1934642244]
+offset_left = 52.0
+offset_top = 76.0
+offset_right = 76.00004
+offset_bottom = 100.0
+focus_neighbor_left = NodePath("../Music")
+focus_neighbor_right = NodePath("../Continue")
+mouse_default_cursor_shape = 2
+theme = ExtResource("6_m08e7")
+icon = ExtResource("5_ahfbf")
+icon_alignment = 1
+
+[node name="Continue" type="Button" parent="." unique_id=261413073]
+offset_left = 116.0
+offset_top = 84.0
+offset_right = 140.0
+offset_bottom = 108.0
+focus_neighbor_left = NodePath("../Sound")
+focus_neighbor_right = NodePath("../Music")
+mouse_default_cursor_shape = 2
+theme = ExtResource("6_m08e7")
+icon = ExtResource("5_preye")
+icon_alignment = 1
+
+[node name="Music" type="Button" parent="." unique_id=287290955]
+offset_left = 180.0
+offset_top = 76.0
+offset_right = 204.0
+offset_bottom = 100.0
+focus_neighbor_left = NodePath("../Continue")
+focus_neighbor_right = NodePath("../Sound")
+mouse_default_cursor_shape = 2
+theme = ExtResource("6_m08e7")
+icon = ExtResource("7_3op3g")
+icon_alignment = 1
+
+[node name="Decor1" type="TextureRect" parent="." unique_id=1863963668]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+texture = ExtResource("12_40lxi")
+stretch_mode = 3
+
+[node name="Decor2" type="TextureRect" parent="." unique_id=1046963156]
+offset_left = -8.0
+offset_top = 136.0
+offset_right = 8.0
+offset_bottom = 152.0
+texture = ExtResource("12_40lxi")
+stretch_mode = 3
+
+[node name="Decor3" type="TextureRect" parent="." unique_id=1508202546]
+offset_left = 248.0
+offset_top = 136.0
+offset_right = 264.0
+offset_bottom = 152.0
+texture = ExtResource("12_40lxi")
+stretch_mode = 3
+
+[node name="Decor4" type="TextureRect" parent="." unique_id=1251041579]
+offset_left = 248.0
+offset_top = -8.0
+offset_right = 264.0
+offset_bottom = 8.0
+texture = ExtResource("12_40lxi")
+stretch_mode = 3
+
+[connection signal="mouse_entered" from="Sound" to="." method="_on_sound_mouse_entered"]
+[connection signal="pressed" from="Sound" to="." method="_on_sound_pressed"]
+[connection signal="mouse_entered" from="Continue" to="." method="_on_continue_mouse_entered"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="Music" to="." method="_on_music_mouse_entered"]
+[connection signal="pressed" from="Music" to="." method="_on_music_pressed"]
