@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bv1r0sn85nlub"]
+
+[ext_resource type="Texture2D" uid="uid://qqees0vg4swr" path="res://Sprites/Particles/BubbleParticles.png" id="1_tj4hu"]
+[ext_resource type="Script" uid="uid://dwg3ifim76imp" path="res://Scripts/Script_Particles.gd" id="2_e8xb8"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" unique_id=98168549]
+emitting = false
+amount = 4
+texture = ExtResource("1_tj4hu")
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+gravity = Vector2(0, -32)
+initial_velocity_min = 32.0
+initial_velocity_max = 64.0
+script = ExtResource("2_e8xb8")
