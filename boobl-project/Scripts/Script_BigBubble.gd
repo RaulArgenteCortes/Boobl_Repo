@@ -24,4 +24,8 @@ func _on_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(1).timeout
 	SfxBigBubble.playing = false
 	await get_tree().create_timer(7).timeout
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), 0)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sound"), false)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Sound"), 0)
 	get_tree().reload_current_scene()

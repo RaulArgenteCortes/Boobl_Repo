@@ -37,7 +37,7 @@ position = Vector2(0, 32)
 position = Vector2(0, 16)
 
 [node name="SpawnPlayer" type="Node2D" parent="." unique_id=461320594]
-position = Vector2(0, -72)
+position = Vector2(-112, -320)
 
 [node name="BigBubble" parent="." unique_id=623703334 instance=ExtResource("6_75akb")]
 position = Vector2(0, -104)
