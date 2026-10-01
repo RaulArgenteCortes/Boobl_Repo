@@ -892,7 +892,7 @@ position = Vector2(-72, -288)
 [node name="Glass40" parent="Objects/Glasses" unique_id=1225455985 instance=ExtResource("11_aaru7")]
 position = Vector2(-328, 128)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1104996079]
+[node name="EndSprite" type="Sprite2D" parent="." unique_id=1104996079]
 visible = false
 position = Vector2(0, 40)
 texture = ExtResource("11_fe1ul")

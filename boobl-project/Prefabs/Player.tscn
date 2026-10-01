@@ -2,6 +2,11 @@
 
 [ext_resource type="SpriteFrames" uid="uid://e5cnj6l7lhpq" path="res://Sprites/SpriteFrames/SpriteFrame_Player.tres" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://lc4mek1jkn5k" path="res://Scripts/Script_PlayerMovement.gd" id="1_x3d5u"]
+[ext_resource type="AudioStream" uid="uid://cic0jtc3gt8ka" path="res://SFX/Sound/Jump.mp3" id="3_gg3t4"]
+[ext_resource type="AudioStream" uid="uid://b3og7q8muasa5" path="res://SFX/Sound/Dash.mp3" id="4_javds"]
+[ext_resource type="AudioStream" uid="uid://dywrjkxu1oxbt" path="res://SFX/Sound/ShortDash.mp3" id="5_3ygst"]
+[ext_resource type="AudioStream" uid="uid://bgk30bkbo31kw" path="res://SFX/Sound/Death.mp3" id="6_lhekp"]
+[ext_resource type="AudioStream" uid="uid://bxbsv2w1j3jvn" path="res://SFX/Sound/Landing.mp3" id="8_lhekp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3d5u"]
 size = Vector2(12, 12)
@@ -18,6 +23,31 @@ size = Vector2(12, 2.2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxq8l"]
 size = Vector2(2.2, 6)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gg3t4"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("3_gg3t4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_javds"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("4_javds")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3ygst"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("5_3ygst")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2qb3"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("8_lhekp")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lhekp"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("6_lhekp")
+
 [node name="Player" type="CharacterBody2D" unique_id=1614960923]
 z_index = 10
 collision_layer = 2
@@ -31,7 +61,7 @@ debug_color = Color(1, 1, 1, 0.30980393)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1153459768]
 position = Vector2(0, -1)
 sprite_frames = ExtResource("1_um8lo")
-animation = &"Crash"
+animation = &"Landing"
 autoplay = "Idle"
 
 [node name="Area2D_Death" type="Area2D" parent="." unique_id=821826183]
@@ -90,6 +120,32 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sticky/Area2D_StickyE" unique_id=426334289]
 shape = SubResource("RectangleShape2D_vxq8l")
 debug_color = Color(1, 0.49803922, 0, 0.18431373)
+
+[node name="sfx_jump" type="AudioStreamPlayer2D" parent="." unique_id=352930830]
+stream = SubResource("AudioStreamRandomizer_gg3t4")
+volume_db = 16.0
+bus = &"Sound"
+
+[node name="sfx_dash" type="AudioStreamPlayer2D" parent="." unique_id=1236283787]
+stream = SubResource("AudioStreamRandomizer_javds")
+volume_db = 16.0
+bus = &"Sound"
+
+[node name="sfx_short_dash" type="AudioStreamPlayer2D" parent="." unique_id=1555993712]
+stream = SubResource("AudioStreamRandomizer_3ygst")
+volume_db = 16.0
+bus = &"Sound"
+
+[node name="sfx_landing" type="AudioStreamPlayer2D" parent="." unique_id=311859090]
+stream = SubResource("AudioStreamRandomizer_k2qb3")
+volume_db = 1.0
+max_polyphony = 4
+bus = &"Sound"
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="." unique_id=807214710]
+stream = SubResource("AudioStreamRandomizer_lhekp")
+volume_db = 8.0
+bus = &"Sound"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_animation_finished"]
 [connection signal="body_entered" from="Area2D_Death" to="." method="_on_area_entered_death"]

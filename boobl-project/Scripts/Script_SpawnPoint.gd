@@ -3,6 +3,7 @@ extends Area2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var spawnPlayer = $"../../../SpawnPlayer"
+@onready var SfxSpawnPoint = $sfx_SpawnPoint
 
 
 func _process(_delta: float) -> void:
@@ -17,4 +18,6 @@ func _handle_animations():
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	spawnPlayer.position = position
+	if (spawnPlayer.position != position):
+		spawnPlayer.position = position
+		SfxSpawnPoint.playing = true

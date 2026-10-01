@@ -6,6 +6,7 @@ var canClose = true
 @onready var static_body = $StaticBody2D/CollisionShape2D
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player = $"../../../Player"
+@onready var SfxBreak = $sfx_Break
 
 
 func _process(_delta: float) -> void:
@@ -18,6 +19,7 @@ func _process(_delta: float) -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	canClose = false
 	animated_sprite.play("Open")
+	SfxBreak.playing = true
 
 func _on_body_exited(_body: Node2D) -> void:
 	canClose = true

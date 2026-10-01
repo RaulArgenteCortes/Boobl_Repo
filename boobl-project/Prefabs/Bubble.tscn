@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dhcfgc613yvkp" path="res://Scripts/Script_Bubble.gd" id="1_eykqe"]
 [ext_resource type="SpriteFrames" uid="uid://c8c5grhj122gx" path="res://Sprites/SpriteFrames/SpriteFrame_Bubble.tres" id="1_qgs0j"]
+[ext_resource type="AudioStream" uid="uid://dywrjkxu1oxbt" path="res://SFX/Sound/ShortDash.mp3" id="3_c7xeu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1a31p"]
 radius = 5.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bh8k8"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("3_c7xeu")
 
 [node name="Bubble" type="Area2D" unique_id=98401263]
 collision_layer = 0
@@ -19,5 +25,11 @@ debug_color = Color(1, 1, 1, 0.41960785)
 sprite_frames = ExtResource("1_qgs0j")
 animation = &"Enabled"
 autoplay = "Enabled"
+
+[node name="sfx_Bubble" type="AudioStreamPlayer2D" parent="." unique_id=819756838]
+stream = SubResource("AudioStreamRandomizer_bh8k8")
+volume_db = 16.0
+pitch_scale = 2.0
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

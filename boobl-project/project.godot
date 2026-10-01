@@ -15,6 +15,10 @@ run/main_scene="uid://c1wmkg3id31qk"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://dilhalit6oquh"
+
 [display]
 
 window/size/viewport_width=256
@@ -27,6 +31,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Prefabs/": "gray",
+"res://SFX/": "red",
 "res://Scenes/": "blue",
 "res://Scripts/": "yellow",
 "res://Sprites/": "pink",

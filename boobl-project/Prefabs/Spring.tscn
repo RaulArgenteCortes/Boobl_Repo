@@ -2,9 +2,15 @@
 
 [ext_resource type="SpriteFrames" uid="uid://yrlq31bcg2fn" path="res://Sprites/SpriteFrames/SpriteFrame_Spring.tres" id="1_fy6p7"]
 [ext_resource type="Script" uid="uid://bg816aqik46qt" path="res://Scripts/Script_Spring.gd" id="1_q4c11"]
+[ext_resource type="AudioStream" uid="uid://b230h1paldq10" path="res://SFX/Sound/TallJump.mp3" id="3_7gqhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4c11"]
 size = Vector2(12, 8)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mj2d1"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("3_7gqhu")
 
 [node name="Spring" type="Area2D" unique_id=398237677]
 collision_layer = 0
@@ -20,6 +26,11 @@ autoplay = "Idle"
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_q4c11")
 debug_color = Color(0.49803922, 1, 0, 0.41960785)
+
+[node name="sfx_TallJump" type="AudioStreamPlayer2D" parent="." unique_id=889829477]
+stream = SubResource("AudioStreamRandomizer_mj2d1")
+volume_db = 16.0
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
