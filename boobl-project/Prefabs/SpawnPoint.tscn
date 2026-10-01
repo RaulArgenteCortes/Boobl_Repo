@@ -2,9 +2,15 @@
 
 [ext_resource type="Script" uid="uid://5hs280wocwyv" path="res://Scripts/Script_SpawnPoint.gd" id="1_8y5jf"]
 [ext_resource type="SpriteFrames" uid="uid://b8dao1bstu74q" path="res://Sprites/SpriteFrames/SpriteFrame_SpawnPoint.tres" id="1_i3d73"]
+[ext_resource type="AudioStream" uid="uid://cafa2f05vo3kq" path="res://SFX/Sound/SpawnPoint.mp3" id="3_3gi7l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8y5jf"]
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5gfa2"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("3_3gi7l")
 
 [node name="SpawnPoint" type="Area2D" unique_id=344328244]
 collision_layer = 0
@@ -19,5 +25,10 @@ autoplay = "Idle_Off"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1612896121]
 shape = SubResource("CircleShape2D_8y5jf")
 debug_color = Color(0.49803922, 0, 1, 0.41960785)
+
+[node name="sfx_SpawnPoint" type="AudioStreamPlayer2D" parent="." unique_id=1048001087]
+stream = SubResource("AudioStreamRandomizer_5gfa2")
+volume_db = 16.0
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

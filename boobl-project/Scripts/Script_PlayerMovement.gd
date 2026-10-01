@@ -16,6 +16,7 @@ var canJump = false
 var isDying = false
 var isLanding = false
 var isDashing = false
+var isCrashing = false
 var stickN = false
 var stickS = false
 var stickW = false
@@ -25,7 +26,13 @@ var isSticked = false
 @onready var spawnPlayer = $"../SpawnPlayer"
 @onready var bubbleFollow = $BubbleFollow
 @onready var bubbleSide = bubbleFollow.position
+#@onready var dashParticles = preload("res://Prefabs/DashParticles.tscn")
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var SfxJump = $sfx_jump
+@onready var SfxDash = $sfx_dash
+@onready var SfxShortDash = $sfx_short_dash
+@onready var SfxLanding = $sfx_landing
+@onready var SfxDeath = $sfx_death
 
 
 func _ready() -> void:
@@ -58,7 +65,7 @@ func _process(_delta: float) -> void:
 #region Update Functions
 func _apply_gravity(delta):
 	
-	if !is_on_floor() && !isDashing && !isSticked:
+	if !is_on_floor() && !isDashing && !isSticked && !isCrashing:
 		if velocity.y < -jumpForce: # Limits the falling speed.
 			velocity += (get_gravity()/4) * delta
 
@@ -69,6 +76,7 @@ func _handle_stick():
 			# Animation stuff:
 			isLanding = true
 			animated_sprite.play("Landing")
+			SfxLanding.playing = true
 	if !(stickN || stickS || stickW || stickE):
 		if isSticked:
 			isSticked = false
@@ -103,15 +111,10 @@ func _handle_movement():
 			velocity.x = speed * facingDirection.x
 		else:
 			velocity.x = 0
-	
-	if isDashing && is_on_wall():
-		await get_tree().create_timer(0.02).timeout # Fixes some interactions.
-		if isDashing && is_on_wall():
-			isDashing = false
 
 func _handle_jump():
 	
-	if is_on_floor():
+	if is_on_floor() && !isDashing:
 		canJump = true
 		canDash = true
 	
@@ -119,6 +122,7 @@ func _handle_jump():
 		if onGround && canJump:
 			canJump = false
 			velocity.y = jumpForce
+			SfxJump.playing = true
 		elif !onGround && !isDashing && canDash:
 			_on_dash()
 
@@ -143,6 +147,7 @@ func _handle_sticky_jump():
 		if stickS:
 			position.y += -1
 			velocity.y = stickedJumpForce
+			SfxJump.playing = true
 		elif stickN:
 			position.y += 1
 		else:
@@ -173,6 +178,11 @@ func _on_dash():
 	
 	await get_tree().create_timer(0.01).timeout
 	velocity.x += dashForce * facingDirection.x
+	var dashParticles = preload("res://Prefabs/DashParticles.tscn").instantiate()
+	add_child(dashParticles)
+	dashParticles.rotation = 90 + 90 * facingDirection.x
+	dashParticles.emitting = true
+	SfxDash.playing = true
 	await get_tree().create_timer(0.45).timeout
 	
 	if isDashing:
@@ -188,6 +198,7 @@ func _on_sticky_dash():
 	await get_tree().create_timer(0.01).timeout
 	position.x += 2 * facingDirection.x
 	velocity.x += stickedDashForce * facingDirection.x
+	SfxShortDash.playing = true
 	await get_tree().create_timer(0.175).timeout
 	
 	if isDashing:
@@ -197,6 +208,11 @@ func _on_sticky_dash():
 func _on_death():
 	isDying = true
 	canDash = false
+	SfxDeath.playing = true
+	var deathParticles = preload("res://Prefabs/DeathParticles.tscn").instantiate()
+	add_child(deathParticles)
+	deathParticles.emitting = true
+	SfxDash.playing = true
 #endregion
 
 #region Trigger Sticky Functions
@@ -266,7 +282,7 @@ func _handle_animations():
 	if isDying:
 			animated_sprite.play("Death")
 	elif !isSticked:
-		if !isDashing && !isLanding:
+		if !isDashing && !isLanding && !isCrashing:
 			if velocity.y == 0 && is_on_floor():
 				if abs(inputDirection.x) <= 0.7:
 					animated_sprite.play("Idle")
@@ -277,10 +293,10 @@ func _handle_animations():
 					animated_sprite.play("Jump_Up")
 				else:
 					animated_sprite.play("Jump_Down")
-		elif !isLanding:
+		elif !isLanding && !isCrashing && !is_on_wall():
 			animated_sprite.play("Dash")
 	else:
-		if !isLanding:
+		if !isLanding  && !isCrashing:
 			if abs(inputDirection.x) >= 0.7 || abs(inputDirection.y) >= 0.7:
 				animated_sprite.play("Walk_Sticked")
 			else:
@@ -290,12 +306,22 @@ func _handle_animations():
 		falling = false
 		isLanding = true
 		animated_sprite.play("Landing")
-	elif !is_on_floor() && velocity.y > 0:
+		SfxLanding.playing = true
+	elif is_on_wall() && isDashing && !isSticked:
+		await get_tree().create_timer(0.02).timeout # Fixes some interactions.
+		if is_on_wall() && isDashing  && !isSticked:
+			isDashing = false
+			isCrashing = true
+			animated_sprite.play("Crash")
+			SfxLanding.playing = true
+	elif !is_on_floor() && velocity.y > 0 && !isCrashing:
 		falling = true
 
 func _animation_finished() -> void:
 	if animated_sprite.animation == "Landing":
 		isLanding = false
+	if animated_sprite.animation == "Crash":
+		isCrashing = false
 	if animated_sprite.animation == "Death":
 		isDying = false
 		velocity = Vector2.ZERO
