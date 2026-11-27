@@ -7,6 +7,9 @@ extends Area2D
 @onready var SfxBubble = $sfx_Bubble
 
 
+func _ready() -> void:
+	animated_sprite.speed_scale += (randf()-0.5)*0.1
+
 func _process(_delta: float) -> void:
 	if player.onGround || player.animated_sprite.animation == "Death":
 		animated_sprite.play("Enabled")

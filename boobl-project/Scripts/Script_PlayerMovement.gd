@@ -212,7 +212,6 @@ func _on_death():
 	var deathParticles = preload("res://Prefabs/DeathParticles.tscn").instantiate()
 	add_child(deathParticles)
 	deathParticles.emitting = true
-	SfxDash.playing = true
 #endregion
 
 #region Trigger Sticky Functions
@@ -309,7 +308,7 @@ func _handle_animations():
 		SfxLanding.playing = true
 	elif is_on_wall() && isDashing && !isSticked:
 		await get_tree().create_timer(0.02).timeout # Fixes some interactions.
-		if is_on_wall() && isDashing  && !isSticked:
+		if is_on_wall() && isDashing && !isSticked:
 			isDashing = false
 			isCrashing = true
 			animated_sprite.play("Crash")
@@ -320,6 +319,7 @@ func _handle_animations():
 func _animation_finished() -> void:
 	if animated_sprite.animation == "Landing":
 		isLanding = false
+		isCrashing = false
 	if animated_sprite.animation == "Crash":
 		isCrashing = false
 	if animated_sprite.animation == "Death":
@@ -327,4 +327,5 @@ func _animation_finished() -> void:
 		velocity = Vector2.ZERO
 		position = spawnPlayer.position
 		animated_sprite.play("Jump_Down")
+		canDash = false
 #endregion

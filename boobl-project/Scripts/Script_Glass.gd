@@ -9,6 +9,9 @@ var canClose = true
 @onready var SfxBreak = $sfx_Break
 
 
+func _ready() -> void:
+	animated_sprite.speed_scale += (randf()-0.5)*0.1
+
 func _process(_delta: float) -> void:
 	
 	if player.isDashing:

@@ -8,6 +8,9 @@ var bounceForce = -155
 @onready var SfxTallJump = $sfx_TallJump
 
 
+func _ready() -> void:
+	animated_sprite.speed_scale += (randf()-0.5)*0.1
+
 func _on_body_entered(_body: Node2D) -> void:
 	_body.velocity.y = bounceForce
 	_body.isDashing = false

@@ -22,7 +22,11 @@ func _process(_delta: float) -> void:
 			resume()
 	
 	SfxSelect.position = camera.position
-	SfxMusic.position = camera.position
+	if camera.position.x == 0 && camera.position.y == -432:
+		SfxMusic.position.x = 8888
+		SfxMusic.position.y = 8888
+	else:
+		SfxMusic.position = camera.position
 
 func resume():
 	get_tree().paused = false
